@@ -1,0 +1,21 @@
+<div>Coffee List is inside the module</div>
+<input type="text" (change)="setUserName($event)"/>
+<button (click)="addUsers()">Add</button>
+<!--
+<div *ngFor="let coffeebrand of testCoffeeList">
+  {{ coffeebrand }}
+</div>
+-->
+<div *ngIf="coffList != undefined">
+  <div>Show them</div>
+
+  <div *ngFor="let coffeeObj of coffList">
+    {{ coffeeObj.id }} is {{ coffeeObj.name }} of type {{coffeeObj.type }}
+    <!-- <span (click)="removeUser(coffeeObj.id)">remove</span> -->
+    <span (click)="removeUserParent.emit(coffeeObj.id)">remove</span>
+  </div>
+
+</div>
+
+
+{{ testCoffee }}
