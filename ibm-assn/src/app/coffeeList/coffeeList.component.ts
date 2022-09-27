@@ -6,7 +6,8 @@ import {Component, EventEmitter, Input, Output} from "@angular/core";
 })
 export class CoffeeListComponent{
   @Input() coffList : { id: number; name: string; type: string; }[] | undefined;
-  @Output() removeUserParent = new EventEmitter()
+  @Output() removeUserParent = new EventEmitter();
+  @Output() addUserParent = new EventEmitter();
 
   newName : string = '';
 
@@ -18,6 +19,13 @@ export class CoffeeListComponent{
       this.coffList = this.coffList.filter( OBJ => OBJ.id != id)
     }
   }
+
+  addUsers() : void {
+    this.addUserParent.emit(this.newName);
+    this.newName = "";
+  }
+
+  /* Old addUser method
   addUsers() : void {
     console.log("hit addUsers()")
     let id = this.coffList?.length;
@@ -29,7 +37,10 @@ export class CoffeeListComponent{
       };
       this.coffList?.push(newCoffee);
     }
+    this.newName = "";
   }
+
+   */
   setUserName(event: any) : void {
     let name = event.target as HTMLInputElement;
     this.newName = name.value;

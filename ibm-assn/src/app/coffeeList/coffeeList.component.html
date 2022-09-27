@@ -1,5 +1,5 @@
 <div>Coffee List is inside the module</div>
-<input type="text" (change)="setUserName($event)"/>
+<input type="text" (change)="setUserName($event)"  [value]="newName"/>
 <button (click)="addUsers()">Add</button>
 <!--
 <div *ngFor="let coffeebrand of testCoffeeList">
