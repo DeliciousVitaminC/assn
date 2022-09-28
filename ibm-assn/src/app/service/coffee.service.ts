@@ -16,11 +16,16 @@ export class CoffeeService {
     return this.http.delete('http://localhost:3000/coffeeList/'+id);
   }
 
-  /*
+
   addCoffee(name: string) : Observable<{}> {
-    return this.http.post('http://localhost:3000/coffeeList/'+name);
+    let id = Math.random();
+    let addOn = {
+      id : id,
+      name: name,
+      type: "new created"
+    }
+    return this.http.post('http://localhost:3000/coffeeList/', addOn);
   }
 
-   */
 
 }

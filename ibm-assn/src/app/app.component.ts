@@ -39,12 +39,14 @@ export class AppComponent {
     console.log("OnInitial");
   }
 
-  ngOnInit() : void {
-    this.coffee.getCoffee().subscribe((res: CoffeeInterface[]) => {
+  fetchList() : void {
+    this.coffee.getCoffee().subscribe((res:CoffeeInterface[])=>{
       this.testCoffeeObj = res;
-    });
+    })
+  }
 
-
+  ngOnInit() : void {
+    this.fetchList();
   }
 
 
@@ -58,7 +60,14 @@ export class AppComponent {
 
   removeUserGGAPI(id: number) : void {
     this.coffee.deleteCoffee(id).subscribe(() =>{});
+    this.fetchList();
+    /*
+    if (this.testCoffeeObj != undefined){
+    this.testCoffeeObj = this.testCoffeeObj.filter( OBJ => OBJ.id != id)}
+
+     */
   }
+
 
   addUsersGG(newName: string) : void {
     console.log("hit addUsers()")
@@ -73,17 +82,9 @@ export class AppComponent {
     }
   }
 
-  /*
+
   addUsersGGAPI(newName: string) : void {
-    let id = this.testCoffeeObj?.length;
-    if(id != undefined){
-      let newCoffee : CoffeeInterface = {
-        id: (id as number) + 1,
-        name: newName,
-        type: 'new added'
-      };
-    }
+    this.coffee.addCoffee(newName).subscribe(()=>{});
+    this.fetchList();
   }
-  
-   */
 }

@@ -1,3 +1,19 @@
 {
-  "coffeeList": []
+  "coffeeList": [
+    {
+      "id": 0.948175280567775,
+      "name": "DsdfWDQWE",
+      "type": "new created"
+    },
+    {
+      "id": 0.17022707898162048,
+      "name": "sadfkjafd",
+      "type": "new created"
+    },
+    {
+      "id": 0.5089087981436491,
+      "name": "",
+      "type": "new created"
+    }
+  ]
 }
