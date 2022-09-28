@@ -1,13 +1,14 @@
 import {Component, EventEmitter, Input, Output} from "@angular/core";
+import {CoffeeInterface} from "../type/coffee.interface";
 
 @Component({
   selector:'app-coffee-list',
   templateUrl: './coffeeList.component.html'
 })
 export class CoffeeListComponent{
-  @Input() coffList : { id: number; name: string; type: string; }[] | undefined;
-  @Output() removeUserParent = new EventEmitter();
-  @Output() addUserParent = new EventEmitter();
+  @Input() coffList : CoffeeInterface[] | undefined;
+  @Output() removeUserParent = new EventEmitter<number>();
+  @Output() addUserParent = new EventEmitter<string>();
 
   newName : string = '';
 

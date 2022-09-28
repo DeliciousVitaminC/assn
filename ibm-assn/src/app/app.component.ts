@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {CoffeeInterface} from "./type/coffee.interface";
+import {CoffeeService} from "./service/coffee.service";
 
 @Component({
   selector: 'app-root',
@@ -7,7 +9,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ibm-assn';
-  testCoffeeObj = [
+  testCoffeeObj : CoffeeInterface[] = [];
+  /*
+  testCoffeeObj : CoffeeInterface[] = [
     {
       id: 1,
       name: 's',
@@ -29,6 +33,22 @@ export class AppComponent {
       type: 'ahahahaha'
     }
   ];
+
+   */
+  constructor(private coffee: CoffeeService) {
+    console.log("OnInitial");
+  }
+
+  ngOnInit() : void {
+    this.coffee.getCoffee().subscribe((res: CoffeeInterface[]) => {
+      this.testCoffeeObj = res;
+    });
+
+
+  }
+
+
+
   removeUserGG(id: number) : void {
     console.log("coffee "+ id + "is removed");
     if (this.testCoffeeObj != undefined){
@@ -36,11 +56,15 @@ export class AppComponent {
     }
   }
 
+  removeUserGGAPI(id: number) : void {
+    this.coffee.deleteCoffee(id).subscribe(() =>{});
+  }
+
   addUsersGG(newName: string) : void {
     console.log("hit addUsers()")
     let id = this.testCoffeeObj?.length;
     if(id != undefined){
-      let newCoffee = {
+      let newCoffee : CoffeeInterface = {
         id: (id as number) + 1,
         name: newName,
         type: 'new added'
@@ -48,4 +72,18 @@ export class AppComponent {
       this.testCoffeeObj?.push(newCoffee);
     }
   }
+
+  /*
+  addUsersGGAPI(newName: string) : void {
+    let id = this.testCoffeeObj?.length;
+    if(id != undefined){
+      let newCoffee : CoffeeInterface = {
+        id: (id as number) + 1,
+        name: newName,
+        type: 'new added'
+      };
+    }
+  }
+  
+   */
 }
