@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {CoffeeInterface} from "../type/coffee.interface";
+import {map} from 'rxjs/operators'
 import {Observable} from "rxjs";
 
 @Injectable()
@@ -9,7 +10,15 @@ export class CoffeeService {
   }
 
   getCoffee() : Observable<CoffeeInterface[]> {
-    return this.http.get<CoffeeInterface[]>('http://localhost:3000/coffeeList');
+    return this.http.get<CoffeeInterface[]>('http://localhost:3000/coffeeList').pipe(
+      map( (coffe: CoffeeInterface[]) => {
+        return coffe.map( cf => ({
+          id: cf.id,
+          name: cf.name,
+          type : cf.type
+        }))
+      })
+    );
   }
 
   deleteCoffee(id: number) : Observable<{}> {
