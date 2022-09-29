@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {CoffeeInterface} from "../type/coffee.interface";
 import {map} from 'rxjs/operators'
 import {Observable} from "rxjs";
+import {RealCoffeeInterface} from "../type/real.coffee.interface";
 
 @Injectable()
 export class CoffeeService {
@@ -19,6 +20,22 @@ export class CoffeeService {
         }))
       })
     );
+  }
+
+  getRealCoffee(size: number) : Observable<RealCoffeeInterface[]> {
+    return this.http.get<RealCoffeeInterface[]>('https://random-data-api.com/api/coffee/random_coffee?size='+size).pipe(
+      map((rCoffee: RealCoffeeInterface[]) =>{
+        return rCoffee.map(rcf => ({
+          id: rcf.id,
+          uid: rcf.uid,
+          blend_name: rcf.blend_name,
+          origin: rcf.origin,
+          variety: rcf.variety,
+          notes: rcf.notes,
+          intensifier: rcf.intensifier
+        }))
+      })
+    )
   }
 
   deleteCoffee(id: number) : Observable<{}> {

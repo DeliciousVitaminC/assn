@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {CoffeeInterface} from "./type/coffee.interface";
 import {CoffeeService} from "./service/coffee.service";
+import {RealCoffeeInterface} from "./type/real.coffee.interface";
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import {CoffeeService} from "./service/coffee.service";
 export class AppComponent {
   title = 'ibm-assn';
   testCoffeeObj : CoffeeInterface[] = [];
+  realCoffeeObj : RealCoffeeInterface[] = [];
   /*
   testCoffeeObj : CoffeeInterface[] = [
     {
@@ -45,8 +47,16 @@ export class AppComponent {
     })
   }
 
+  fetchRealList(size: number) : void{
+    this.coffee.getRealCoffee(size).subscribe((res:RealCoffeeInterface[])=>{
+      console.log(JSON.stringify(res));
+      this.realCoffeeObj = res;
+    })
+  }
+
   ngOnInit() : void {
-    this.fetchList();
+    //this.fetchList();
+    this.fetchRealList(25);
   }
 
 

@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {CoffeeInterface} from "../type/coffee.interface";
+import {RealCoffeeInterface} from "../type/real.coffee.interface";
 
 @Component({
   selector:'app-coffee-list',
@@ -7,6 +8,7 @@ import {CoffeeInterface} from "../type/coffee.interface";
 })
 export class CoffeeListComponent{
   @Input() coffList : CoffeeInterface[] | undefined;
+  @Input() realCoffeeList : RealCoffeeInterface[] | undefined;
   @Output() removeUserParent = new EventEmitter<number>();
   @Output() addUserParent = new EventEmitter<string>();
 

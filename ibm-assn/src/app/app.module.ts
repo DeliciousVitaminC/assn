@@ -6,7 +6,11 @@ import { AppComponent } from './app.component';
 import {CoffeeListComponent} from "./coffeeList/coffeeList.component";   //used when use CoffeeListComponent directly in declarations
 import {CoffeeListModule} from "./coffeeList/coffeeList.module";
 import {HttpClientModule} from "@angular/common/http";
-import {CoffeeService} from "./service/coffee.service";     //used when import CoffeeListModule as a whole
+import {CoffeeService} from "./service/coffee.service";
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';     //used when import CoffeeListModule as a whole
 
 @NgModule({
   declarations: [
@@ -16,7 +20,10 @@ import {CoffeeService} from "./service/coffee.service";     //used when import C
     BrowserModule,
     AppRoutingModule,
     CoffeeListModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [CoffeeService],
   bootstrap: [AppComponent]

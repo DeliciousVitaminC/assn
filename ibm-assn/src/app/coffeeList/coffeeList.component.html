@@ -19,3 +19,22 @@
 
 
 {{ testCoffee }}
+
+
+<div *ngIf="realCoffeeList != undefined">
+  <div>Show them</div>
+
+  <div *ngFor="let realCoffeeObj of realCoffeeList">
+    <div style="display: block">
+      <h4>Coffee item</h4>
+      <div>id: {{realCoffeeObj.id}}</div>
+      <div>uid: {{realCoffeeObj.uid}}</div>
+      <div>blend_name: {{realCoffeeObj.blend_name}}</div>
+      <div>origin: {{realCoffeeObj.origin}}</div>
+      <div>variety: {{realCoffeeObj.variety}}</div>
+      <div>notes: {{realCoffeeObj.notes}}</div>
+      <div>intensifier: {{realCoffeeObj.intensifier}}</div>
+    </div>
+  </div>
+
+</div>
