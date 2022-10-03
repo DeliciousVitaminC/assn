@@ -44,18 +44,27 @@
 -->
 
 <div *ngIf="isLoading$ | async">Loading...</div>
-
-
-  <div *ngFor="let co of coffees$ | async">
-    <div style="display: block">
-      <h4>Coffee item</h4>
-      <div>id: {{co.id}}</div>
-      <div>uid: {{co.uid}}</div>
-      <div>blend_name: {{co.blend_name}}</div>
-      <div>origin: {{co.origin}}</div>
-      <div>variety: {{co.variety}}</div>
-      <div>notes: {{co.notes}}</div>
-      <div>intensifier: {{co.intensifier}}</div>
-    </div>
+<div class="container">
+  <div class="row">
+    <ng-container *ngIf="coffees$ | async">
+      <ng-container *ngFor="let co of coffees$ | async">
+        <div class="col-xl-4">
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Coffee item</h6>
+            </div>
+            <div class="card-body">
+              <div>id: {{co.id}}</div>
+              <div>uid: {{co.uid}}</div>
+              <div>blend_name: {{co.blend_name}}</div>
+              <div>origin: {{co.origin}}</div>
+              <div>variety: {{co.variety}}</div>
+              <div>notes: {{co.notes}}</div>
+              <div>intensifier: {{co.intensifier}}</div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
   </div>
-
+</div>
