@@ -54,10 +54,13 @@ export class AppComponent {
     })
   }
 
+  /*
   ngOnInit() : void {
     //this.fetchList();
     this.fetchRealList(25);
   }
+
+   */
 
 
 

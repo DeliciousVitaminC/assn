@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {CoffeeListComponent} from "./coffeeList/coffeeList.component";   //used when use CoffeeListComponent directly in declarations
@@ -21,9 +20,9 @@ import { environment } from '../environments/environment';     //used when impor
     AppRoutingModule,
     CoffeeListModule,
     HttpClientModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot(),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production, autoPause : true })
   ],
   providers: [CoffeeService],
   bootstrap: [AppComponent]
