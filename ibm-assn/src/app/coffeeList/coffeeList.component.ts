@@ -12,16 +12,14 @@ import {AppStateInterface} from "../type/appState.interface";
   templateUrl: './coffeeList.component.html'
 })
 export class CoffeeListComponent implements OnInit{
-  isLoading$: Observable<boolean>;
-  error$: Observable<string | null>;
-  coffees$: Observable<RealCoffeeInterface[]>;
+  public isLoading$: Observable<boolean>;
+  public error$: Observable<string | null>;
+  public coffees$: Observable<RealCoffeeInterface[]>;
 
   constructor(private store: Store<AppStateInterface>) {
     this.isLoading$ = this.store.pipe(select(selectCoffeeIsloading));
     this.coffees$ = this.store.pipe(select(selectAllCoffee));
     this.error$ = this.store.pipe(select(selectCoffeeError));
-    console.log(this.error$);
-    //console.log(this.coffees$);
   }
 
   ngOnInit() {

@@ -11,14 +11,14 @@ export const initialState: CoffeeListStatesInterface = {
 export const coffeeReducer = createReducer(
   initialState,
   on(Action.loadCoffeeList, (state) => ({...state, isLoading: true})),
-  on(Action.loadCoffeeListSuccess, (state, action) => ({
+  on(Action.loadCoffeeListSuccess, (state, {coffeeList}) => ({
     ...state,
-    coffeeLists: action.coffeeList,
+    coffeeLists: coffeeList,
     isLoading: false
   })),
-  on(Action.loadCoffeeListFailure, (state, action) => ({
+  on(Action.loadCoffeeListFailure, (state, {err}) => ({
     ...state,
-    errMsg: action.err,
+    errMsg: err,
     isLoading: false
   }))
 );

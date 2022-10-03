@@ -10,6 +10,9 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';     //used when import CoffeeListModule as a whole
+import {AppReducer} from "./type/appState.interface";
+import {coffeeEffects} from "./store/coffees/coffeeList.effects";
+import {coffeeReducer} from "./store/coffees/coffeeList.reducer";
 
 @NgModule({
   declarations: [

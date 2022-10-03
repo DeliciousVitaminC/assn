@@ -45,7 +45,7 @@
 
 <div *ngIf="isLoading$ | async">Loading...</div>
 
-<div *ngIf="coffees$ != undefined">
+
   <div *ngFor="let co of coffees$ | async">
     <div style="display: block">
       <h4>Coffee item</h4>
@@ -58,5 +58,4 @@
       <div>intensifier: {{co.intensifier}}</div>
     </div>
   </div>
-</div>
 

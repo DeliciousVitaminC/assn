@@ -42,7 +42,6 @@ export class CoffeeService {
     return this.http.delete('http://localhost:3000/coffeeList/'+id);
   }
 
-
   addCoffee(name: string) : Observable<{}> {
     let id = Math.random();
     let addOn = {
@@ -52,6 +51,4 @@ export class CoffeeService {
     }
     return this.http.post('http://localhost:3000/coffeeList/', addOn);
   }
-
-
 }
