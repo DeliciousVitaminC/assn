@@ -10,21 +10,21 @@ export class CoffeeService {
   constructor(private http: HttpClient) {
   }
 
-  getCoffee() : Observable<CoffeeInterface[]> {
+  getCoffee(): Observable<CoffeeInterface[]> {
     return this.http.get<CoffeeInterface[]>('http://localhost:3000/coffeeList').pipe(
-      map( (coffe: CoffeeInterface[]) => {
-        return coffe.map( cf => ({
+      map((coffe: CoffeeInterface[]) => {
+        return coffe.map(cf => ({
           id: cf.id,
           name: cf.name,
-          type : cf.type
+          type: cf.type
         }))
       })
     );
   }
 
-  getRealCoffee(size: number) : Observable<RealCoffeeInterface[]> {
-    return this.http.get<RealCoffeeInterface[]>('https://random-data-api.com/api/coffee/random_coffee?size='+size).pipe(
-      map((rCoffee: RealCoffeeInterface[]) =>{
+  getRealCoffee(size: number): Observable<RealCoffeeInterface[]> {
+    return this.http.get<RealCoffeeInterface[]>('https://random-data-api.com/api/coffee/random_coffee?size=' + size).pipe(
+      map((rCoffee: RealCoffeeInterface[]) => {
         return rCoffee.map(rcf => ({
           id: rcf.id,
           uid: rcf.uid,
@@ -36,19 +36,5 @@ export class CoffeeService {
         }))
       })
     )
-  }
-
-  deleteCoffee(id: number) : Observable<{}> {
-    return this.http.delete('http://localhost:3000/coffeeList/'+id);
-  }
-
-  addCoffee(name: string) : Observable<{}> {
-    let id = Math.random();
-    let addOn = {
-      id : id,
-      name: name,
-      type: "new created"
-    }
-    return this.http.post('http://localhost:3000/coffeeList/', addOn);
   }
 }
